@@ -1,1 +1,155 @@
-<h2 class="username"><%= current_user.name %></h2>
+<style>
+body{
+  background-color: white;
+}
+
+.bg-black{
+  color:white;
+  background-color:black;
+}
+
+.container{
+  width: 50%;
+}
+
+#main-header .bg-lightorange{
+  background-color:#F2D3AC;
+
+}
+#main-header .port-item{
+  width:30%;
+  height:100%;
+}
+
+.bg-blue {
+  background-color: #032859;
+}
+.bg-lightblue {
+  background-color: #00738B;
+}
+.bg-orange {
+  background-color: #F29966;
+}
+.bg-red {
+  background-color:#F22D1B;
+}
+
+#main-header .port-item:hover{
+  opacity:0.8;
+  cursor:pointer;
+}
+
+@media(min-width: 1199px){
+  .port-item{
+    padding:3em !important;
+  }
+}
+</style>
+<body>
+
+  <div class="container">
+    <header id="main-header">
+      <div class="row no-gutters">
+        <div class="col-lg-4 col-md-5">
+          <%= attachment_image_tag @user,:profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+          <%#= image_tag('person1.jpg', style:"width: 100%; height: 100%;") %>
+        </div>
+        <div class="col-lg-8 col-md-7">
+          <div class="d-flex flex-column">
+            <div class="p-5 bg-lightorange text-dark">
+              <div class="d-flex flex-row justify-content-between align-items-center">
+                <h1 class="display-4"><%= @user.name %></h1>
+                <div class="d-none d-md-block">
+                  <a href="http://twitter.com" class="text-white">
+                  <i class="fab fa-twitter"></i>
+                  </a>
+                </div>
+                <div class="d-none d-md-block">
+                  <a href="http://facenbook.com" class="text-white">
+                  <i class="fab fa-facebook"></i>
+                  </a>
+                </div>
+                <div class="d-none d-md-block">
+                  <a href="http://instagram.com" class="text-white">
+                  <i class="fab fa-instagram"></i>
+                  </a>
+                </div>
+                <div class="d-none d-md-block">
+                  <a href="http://github.com" class="text-white">
+                  <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 bg-black">
+              Which language I prefer to learn
+            </div>
+
+            <div>
+            <div class="d-flex flex-row text-white align-items-stretch text-center">
+              <div class="port-item p-4 bg-blue" data-toggle="collapse" data-target="#home">
+                <i class="fas fa-home fa-2x d-block"></i>
+                <span class="d-none d-sm-block">Home</span>
+              </div>
+              <div class="port-item p-4 bg-lightblue" data-toggle="collapse" data-target="#following">
+                <i class="fas fa-graduation-cap fa-2x d-block"></i>
+                <span class="d-none d-sm-block">Follow</span>
+              </div>
+              <div class="port-item p-4 bg-orange" data-toggle="collapse" data-target="#follower">
+                <i class="fas fa-folder-open fa-2x d-block"></i>
+                <span class="d-none d-sm-block">Followers</span>
+              </div>
+              <div class="port-item p-4 bg-red" data-toggle="collapse" data-target="#contact">
+                <i class="fas fa-envelope fa-2x d-block"></i>
+                <span class="d-none d-sm-block">Contact</span>
+              </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Home -->
+    <div id="home" class="collapse show">
+      <div class="card card-body bg-blue text-white py-5">
+        <% if @user.id == current_user.id %>
+        <%= link_to edit_user_path(@user.id) do %>
+
+          <i class="fas fa-cog fa-2x text-white d-block text-right"></i>
+
+          <% end %>
+          <% end %>
+
+        <h2>Welcome to My Page</h2>
+        <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae, maiores!</p>
+
+      </div>
+
+      <div class="card card-body py-5">
+        <h3></h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde deserunt vitae quo doloribus fuga optio?</p>
+
+        <hr>
+        <%= render 'follow_form', user: @user %>
+        <%= @user.following.count %>
+        <%= @user.followers.count %>
+      </div>
+      </div>
+
+    <!-- following -->
+    <div id="following" class="collapse show">
+    <div class="card card-body bg-lightblue text-white py-5">
+      <h2>Following List</h2>
+    </div>
+
+    <div class="card card-body py-5">
+        <% @users.each do |user| %>
+        <%= link_to user.name, user_path(user.id) %>
+        <% end %>
+    </div>
+    </div>
+
+</body>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_092727) do
+ActiveRecord::Schema.define(version: 2019_11_25_185736) do
 
   create_table "foreign_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 2019_11_12_092727) do
     t.index ["reset_password_token"], name: "index_foreign_users_on_reset_password_token", unique: true
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -45,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_092727) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "language"
+    t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

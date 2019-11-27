@@ -65,7 +65,7 @@
             <ul class="navbar-nav navbar-right">
               <% if user_signed_in? %>
               <li class="login-name">こんにちは<%= current_user.name %></li>
-              <li class="nav-item">マイページへ</li>
+              <li class="nav-item"><%= link_to "マイページへ", user_path(current_user.id) %> </li>
               <li class="nav-item">
               <%= link_to 'ログアウト', destroy_user_session_path, {method: :delete, class:"nav-link"} %>
               </li>
@@ -104,7 +104,6 @@
       </div>
     </footer>
 
-    .modal.fade.text-dark
 
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>

@@ -1,5 +1,35 @@
-<div class="container">
+<style>
+ body{
+   background-color:white;
 
+ }
+</style>
+
+<body>
+<div class="container">
+  <div class="col-lg-3">
+
+  </div>
+</div>
+<section id="users" class="py-3">
+<div class="container">
+ <div class="row">
+  <div class="col">
+    <div class="card-columns">
+      <div class="card">
+
+
+      </div>
+    </div>
+
+  </div>
+
+ </div>
+
+</div>
+
+
+</section>
 
 </div>
 <h1>近くのユーザー一覧</h1>
@@ -8,7 +38,10 @@
 <%= user.name %>
 </div>
 <%= user.language %>
+<%= link_to 'Detail', user_path(user.id), class:'btn btn-primary' %>
 
 <% end %>
 
 </div>
+
+</body>
