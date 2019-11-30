@@ -3,12 +3,13 @@
   <head>
     <title>CodeSwitch</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track':'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track':'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
@@ -16,45 +17,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.full.min.js" defer></script>
+
     <style>
-
-    body{
-      overflow-x:hidden;
-      font-family: 'Lato','Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
-      }
-    .navbar{
-      border-bottom: #008ed6 3px solid;
-      /* z-index:1; */
-      opacity:0.8;
-
-    }
-    .navbar-brand img{
-      height:50px;
-      width:auto;
-    }
-
-
-
-    .login-name{
-      color:white;
-      text-align:center;
-    }
-
-    .nav-link{
-      color: white;
-      margin-right: 10px;
-    }
-
-    body{
-      background: #333;
-    }
-
-
+    @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Noto+Sans+JP:300,400&display=swap');
     </style>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-fixed-top">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
       <div class="container">
         <a href="/users" class="navbar-brand">Code Switch</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -64,8 +34,8 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-right">
               <% if user_signed_in? %>
-              <li class="login-name">こんにちは<%= current_user.name %></li>
-              <li class="nav-item"><%= link_to "マイページへ", user_path(current_user.id) %> </li>
+              <li class="nav-item">
+              <%= link_to 'マイページへ', user_path(current_user.id), class:"nav-link" %></li>
               <li class="nav-item">
               <%= link_to 'ログアウト', destroy_user_session_path, {method: :delete, class:"nav-link"} %>
               </li>
@@ -98,7 +68,7 @@
             <h3>Code Switch</h3>
             <p>Copyright &copy; <span id="year"></span></p>
 
-          <button class="btn btn-danger" data-toggle="modal" data-target="#contactModal">Contact Us</button>
+
           </div>
           </div>
       </div>
@@ -114,6 +84,14 @@
 
     <script>
       $('#year').text(new Date().getFullYear());
+      $('.port-item').click(function () {
+      $('.collapse').collapse('hide');
+    });
+
+    $(document).on('click', '[data-toggle="lightbox"]', function (e) {
+      e.preventDefault();
+      $(this).ekkoLightbox();
+    });
     </script>
   </body>
 </html>

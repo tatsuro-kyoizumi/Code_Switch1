@@ -3,44 +3,17 @@
   <head>
     <title>Code Switch</title>
 
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%#= csrf_meta_tags %>
+    <%#= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track':'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.full.min.js" defer></script>
 
-    <style>
+    <!-- <style>
       @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Noto+Sans+JP:300,400&display=swap');
-
-      body{
-        font-family:'Lato', 'Noto Sans JP', sans-serif;
-      }
-      #bgvid{
-      width:100%;
-      height:auto;
-      z-index:-100;
-      background-color: rgba(0,0,0,0.6);
-      opacity:0.4;
-      /* background-color:#0f1721;
-
-      /* position:fixed; */
-    }
-
-    .video-background{
-      position:relative;
-      width:100%;
-      min-height: 100vh;
-    }
-
-    .caption{
-      position:absolute;
-      top:38%;
-      width:100%;
-      color: red;
-    }
-    </style>
+    </style> -->
   </head>
 
   <body>
@@ -58,16 +31,14 @@
 
       <!-- 今すぐ始めるボタン -->
       <div class="caption text-center">
-        <h1>Code Switch Special</h1>
-        <button class="btn btn-danger" data-toggle="modal" data-target="#signupModal">GET STARTED</button>
-
         <a class="btn btn-outline-light btn-lg" href="/users/sign_up">GET STARTED</a>
+
+
       </div>
 
       <!-- SignupModal -->
 
 
-            <% unless user_signed_in? %>
-            <%= render partial: 'devise/registrations/new' %>
-            <% end %>
-          
+            <%# unless user_signed_in? %>
+            <%#= render partial: 'devise/registrations/new' %>
+            <%# end %>

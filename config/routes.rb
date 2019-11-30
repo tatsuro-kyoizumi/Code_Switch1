@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
+      get :search
     end
   end
   resources :relationships, only: [:create, :destroy]
+  resources :messages, :only => [:create]
+  resources :rooms, :only => [:create, :show, :index]
 
 end

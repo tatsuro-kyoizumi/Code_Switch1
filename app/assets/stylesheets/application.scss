@@ -17,16 +17,30 @@
  @import "bootstrap";            /*ここを追加*/
  @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Noto+Sans+JP:300,400&display=swap');
 
+
  body{
-  overflow-x:hidden;
+  overflow-x:auto;
+  overflow-y:scroll;
   font-family: 'Lato','Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
-  background: #333;
+  // background: #333;
+  height:1000px;
+  min-height:100vh;
+  position:relative;
+
   }
-  
+
+  .container{
+    height:100%;
+  }
+
+.video-background{
+  background:#333;
+}
 .navbar{
   border-bottom: #cc0033 3px solid;
   /* z-index:1; */
   opacity:0.8;
+  margin-bottom:0;
 
 }
 .navbar-brand img{
@@ -47,5 +61,94 @@
 }
 
 footer{
+  position: fixed;
+  bottom: 0;
+  // margin-bottom: 0;
+  width: 100%;
   color:white;
+/* フッタの高さ */
+  // height: 100px;
+  // padding-bottom:0;
 }
+
+.index-container{
+  background-color:white;
+  padding-top:70px;
+}
+
+// トップページ
+#bgvid{
+  width:100%;
+  height:auto;
+  z-index:-100;
+  background-color: rgba(0,0,0,0.6);
+  opacity:0.4;
+  /* background-color:#0f1721;
+
+  /* position:fixed; */
+}
+
+.video-background{
+  position:relative;
+  width:100%;
+  min-height: 100vh;
+}
+
+.caption{
+  position:absolute;
+  top:38%;
+  width:100%;
+  color: red;
+}
+// ここまでトップページ
+
+// ユーザー一覧ページ
+
+
+// ここまでユーザー一覧ページ
+
+// ユーザー詳細ページ
+
+.bg-black{
+  color:white;
+  background-color:black;
+}
+
+.container .show{
+  width: 100%;
+}
+
+#main-header .bg-lightorange{
+  background-color:#F2D3AC;
+
+}
+#main-header .port-item{
+  width:30%;
+  height:100%;
+}
+
+.bg-blue {
+  background-color: #032859;
+}
+.bg-lightblue {
+  background-color: #00738B;
+}
+.bg-orange {
+  background-color: #F29966;
+}
+.bg-red {
+  background-color:#F22D1B;
+}
+
+#main-header .port-item:hover{
+  opacity:0.8;
+  cursor:pointer;
+}
+
+@media(min-width: 1199px){
+  .port-item{
+    padding:3em !important;
+  }
+}
+
+// ここまでユーザー詳細ページ

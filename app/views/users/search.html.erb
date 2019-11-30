@@ -1,11 +1,18 @@
 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':'reload' %>
+<style>
+.near-user-image{
+  border-radius:50%;
+}
+</style>
 <div class="index-container mx-5">
+    <h2>5km圏内のユーザー一覧</h2>
   <div class="row">
+
       <% @users.each do |user| %>
     <div class="col-lg-2">
 
       <div class="card" style="width: 20rem;">
-      <img class="card-img-top mb-0" src="assets/no_image.jpg" alt="Card image cap">
+      <%= attachment_image_tag user, :profile_image, size: "180x180", format: 'jpeg',fallback: "no_image.jpg" %>
       <div class="card-body">
       <h4 class="card-title text-center"><%= user.name %></h4>
       <p class="card-text text-center">Speaking:<%= user.language %></p>
